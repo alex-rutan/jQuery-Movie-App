@@ -7,12 +7,11 @@ $('#target').on("submit", function(evt){
     $title = $('#title').eq(0).val();
     $rating = $('#rating').eq(0).val();
 
-    let $movieDiv = $('body').append($("<div class='movie'></div>"))
-    $movieDiv.append(`<li>${$title}</li><li>${$rating}</li><button class='remove'>remove</button>`)
+    $('body').append($(`<div class='movie'><li>${$title}</li><li>${$rating}</li><button class='remove'>remove</button></div>`))
    
-    $('#target').reset();
+    $('#target')[0].reset();
 });
 
-$('div').on("click", "button", function(evt) {
-    $(evt.target).prev().remove();
-} )
+$('body').on("click", "button", function(evt) {
+    $(evt.target).closest(".movie").remove();
+});
